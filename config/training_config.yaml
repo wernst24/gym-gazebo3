@@ -1,0 +1,70 @@
+# Training configuration for gym-gazebo3
+
+# Environment settings
+environment:
+  env_id: "GazeboPioneer3AT-v0"
+  headless: true
+  normalize_observations: true
+  max_episode_steps: 1000
+
+# Training settings
+training:
+  algorithm: "PPO"
+  total_timesteps: 100000
+  eval_freq: 10000
+  save_freq: 20000
+  
+# Algorithm specific parameters
+algorithms:
+  PPO:
+    learning_rate: 3e-4
+    n_steps: 2048
+    batch_size: 64
+    n_epochs: 10
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_range: 0.2
+    ent_coef: 0.0
+    vf_coef: 0.5
+    max_grad_norm: 0.5
+    
+  SAC:
+    learning_rate: 3e-4
+    buffer_size: 100000
+    learning_starts: 1000
+    batch_size: 256
+    tau: 0.005
+    gamma: 0.99
+    train_freq: 1
+    gradient_steps: 1
+    ent_coef: "auto"
+    
+  TD3:
+    learning_rate: 3e-4
+    buffer_size: 100000
+    learning_starts: 1000
+    batch_size: 256
+    tau: 0.005
+    gamma: 0.99
+    train_freq: 1
+    gradient_steps: 1
+    policy_delay: 2
+    target_policy_noise: 0.2
+    target_noise_clip: 0.5
+
+# Network architecture
+network:
+  policy_net: [256, 256]
+  value_net: [256, 256]
+  
+# Logging and saving
+logging:
+  tensorboard_log: "./logs/"
+  save_path: "./models/"
+  log_interval: 1
+  
+# Evaluation settings
+evaluation:
+  eval_episodes: 10
+  eval_deterministic: true
+  eval_render: false
