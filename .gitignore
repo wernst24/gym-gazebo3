@@ -1,5 +1,28 @@
+# VS Code config (local dev only)
+.vscode/
+
+# ROS 2 colcon build artifacts
+build/
+install/
+log/
+
+# Python bytecode
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.so
+
+# Editor swap/backup files
+*.swp
+*.swo
+*.bak
+*~
+
+# User notes or temp files
+notes.txt
+
+# Python packaging
+*.egg-info/
+dist/
+
 .claude
-**/build/
-**/install/
-**/log/
-**/logs/
