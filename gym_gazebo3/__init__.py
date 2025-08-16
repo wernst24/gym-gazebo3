@@ -21,3 +21,17 @@ register(
     entry_point='gym_gazebo3.envs:GazeboPioneer3ATEnv',
     max_episode_steps=1000,
 )
+
+# Simplified environment that connects to external Gazebo
+register(
+    id='GazeboEmptySimple-v0',
+    entry_point='gym_gazebo3.envs:GazeboEmptyEnvSimple',
+    max_episode_steps=200,
+)
+
+# TurtleBot3 with depth camera (matching target repository)
+register(
+    id='GazeboTurtlebot3Camera-v0',
+    entry_point='gym_gazebo3.envs:GazeboTurtlebot3CameraEnv',
+    max_episode_steps=1000,
+)
